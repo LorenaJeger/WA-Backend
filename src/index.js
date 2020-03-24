@@ -49,7 +49,23 @@ app.get('/posts', (req, res) => {
 
 res.json(postovi)
 });
+app.get('/power',(req, res)=>{
+let a=req.query.a
+let b=req.query.b
+let odgovor=  {
+    rezlutat: a*b
+}
+res.json(odgovor)
+})
 
+app.get('/add',(req, res)=>{
+    let a=Number(req.query.a)
+    let b=Number(req.query.b)
+    let odgovor=  {
+        rezlutat: a+b
+    }
+    res.json(odgovor)
+    })
 app.listen(port, () => console.log(`Slušam na portu ${port}!`))
 
     
