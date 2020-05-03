@@ -250,7 +250,17 @@ app.post('/posts/:postId/comments', async (req, res) => {
     }
 });
 
+ app.get('/posts/:postId/comments', async (req, res) => {
+    let db = await connect();
+    let postId = req.params.postId;
+    
+    let cursor= await db.collection('komentari').find({postId:postId});
+    let results= await cursor.toArray();
 
+    res.json(results);
+    
+
+}); 
 app.delete('/posts/:postId/comments/:commentId', async (req, res) => {
     let db = await connect();
     let commentId = req.params.commentId;
